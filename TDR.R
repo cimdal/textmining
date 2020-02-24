@@ -14,7 +14,7 @@ library(reshape)
 loi_raw_1 <- readtext::readtext("C:/Users.../Stage 1/LOI/Batch 1")
 loi_raw_2 <- readtext::readtext("C:/Users.../Stage 1/LOI/Batch 2")
 
-wb <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/CLASS4.csv")
+wb <- read.csv("C:/Users/.../CLASS4.csv")
 
 #Converting to Data Frame
 loi_raw_1 <- as.data.frame(loi_raw_1)
