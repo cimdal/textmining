@@ -11,8 +11,8 @@ library(textclean)
 library(reshape)
 
 #Read PDF
-loi_raw_1 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 1")
-loi_raw_2 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 2")
+loi_raw_1 <- readtext::readtext("C:/Users.../Stage 1/LOI/Batch 1")
+loi_raw_2 <- readtext::readtext("C:/Users.../Stage 1/LOI/Batch 2")
 
 wb <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/CLASS4.csv")
 
@@ -149,8 +149,6 @@ loi_diseases$country <- str_replace_all(loi_diseases$country , "\"", "")
 #To Remove Duplicates
 loi_diseases <- loi_diseases[!duplicated(loi_diseases), by = c("serial_number, diseases, country")]
 
-
-
 #########################################################################################################
 
 #Excel-Country
@@ -182,7 +180,6 @@ sum(loi_count_2$tally) #to check if sum of diseases are equal
 
 #Column
 loi_column_2 <- cast(loi_count_2,doc_id+serial_number+evaluation_score~country)
-
 
 
 #########################################################################################################
@@ -397,18 +394,15 @@ loi_diseases <- mutate(loi_diseases, WHO_region = ifelse(country %in% WHO_AFRO, 
                                                                               ifelse(country %in% WHO_SEARO,"WHO_SEARO",
                                                                                      ifelse(country %in% WHO_WPRO,"WHO_WPRO", "NA")))))))
 
-#########################################################################################################
+###############################################################################################################################
 
 #Stage 1- WHO Region using Excel
 WHO_Region <- wb[1:2]
 
 
+###############################################################################################################################
 
-
-
-#########################################################################################################
-
-wb <- read_excel("C:/Users/louis/Desktop/MEGA/Working experience/United Nation/Consultant Nov 2019/Country/CLASS.xls")
+wb <- read_excel("C:/Users/.../Country/CLASS.xls")
 income_wb <- wb %>% select(4,8)
 income_wb <- income_wb[-c(1:5),]
 names(income_wb)[1] <- "country"
