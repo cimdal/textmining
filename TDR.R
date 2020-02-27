@@ -11,15 +11,15 @@ library(textclean)
 library(reshape)
 
 #Read PDF
-loi_raw_1 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 1")
-loi_raw_2 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 2")
-loi_raw_3 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 3")
-loi_raw_4 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 4")
-loi_raw_5 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 5")
-loi_raw_6 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 6")
+loi_raw_1 <- readtext::readtext("C:/...IIGH/TDR/Stage 1/LOI/Batch 1")
+loi_raw_2 <- readtext::readtext("C:/... IIGH/TDR/Stage 1/LOI/Batch 2")
+loi_raw_3 <- readtext::readtext("C:/... IIGH/TDR/Stage 1/LOI/Batch 3")
+loi_raw_4 <- readtext::readtext("C:/... IIGH/TDR/Stage 1/LOI/Batch 4")
+loi_raw_5 <- readtext::readtext("C:/... IIGH/TDR/Stage 1/LOI/Batch 5")
+loi_raw_6 <- readtext::readtext("C:/... IIGH/TDR/Stage 1/LOI/Batch 6")
 
 #Read Excel - Country, WHO Region, WB Income Group
-wb <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/TDR - Excel.csv")
+wb <- read.csv("C:/... IIGH/TDR/Stage 1/TDR - Excel.csv")
 names(wb)[names(wb) == "ï..country"] <- "country"
 
 #Converting to Data Frame
