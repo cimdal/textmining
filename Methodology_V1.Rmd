@@ -1,0 +1,76 @@
+---
+title: "Mapping implementation research trends from WHO TDR MOOC's participant proposals"
+mainfont: Roboto Condensed
+author: Dr Claudia Abreu-Lopes, Dr Evangelia Berdou & Fung-Chim Lam
+fontsize: 12pt
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=8 cm]{UNU-IIGH_logo.jpg}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+- \usepackage{amsmath}
+subtitle: "A reproducible text mining and text analytics approach"
+output:
+  pdf_document: 
+    df_print: kable
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+    highlight: tango
+    toc: yes
+    latex_engine: xelatex
+  output:
+  word_document:
+    toc: yes
+    toc_depth: '3'
+    df_print: kable
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+  html_document:
+    highlight: tango
+    toc: true
+    toc_depth: 2
+    toc_float: true
+geometry: "left=2cm,right=7cm,top=2cm,bottom=2cm"
+---
+
+
+# Introduction: study goals and principles
+
+
+# Character of TDR's MOOC
+
+# Methodology
+
+## Character of the corpus
+
+## Research Questions
+
+## Overarching methodological approach
+
+# Text Mining Stage 1: Diseases and countries of interest
+
+## Analytical strategy
+
+## Troubleshooting
+
+## Main findings
+
+## Suggestions for improvement
+
+
+# Text Mining Stage 2: Research approach trends
+
+## Analytical strategy
+
+## Troubleshooting
+
+## Main findings
+
+## Suggestions for improvement
+
+# Conclusions
+
+\newpage 
+
+# ANNEX
