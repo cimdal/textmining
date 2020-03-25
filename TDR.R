@@ -35,12 +35,12 @@ loi_raw_5 <- as.data.frame(loi_raw_5)
 loi_raw_6 <- as.data.frame(loi_raw_6)
 
 #Batch Number - PDF
-loi_raw_1$evaluation_score <- 1
-loi_raw_2$evaluation_score <- 2
-loi_raw_3$evaluation_score <- 3
-loi_raw_4$evaluation_score <- 4
-loi_raw_5$evaluation_score <- 5
-loi_raw_6$evaluation_score <- 6
+loi_raw_1$batch_number <- 1
+loi_raw_2$batch_number <- 2
+loi_raw_3$batch_number <- 3
+loi_raw_4$batch_number <- 4
+loi_raw_5$batch_number <- 5
+loi_raw_6$batch_number <- 6
 
 #Serial Number - LoI
 loi_raw_1$serial_number<- paste("loi_", 1:nrow(loi_raw_1), sep = "")
@@ -88,11 +88,11 @@ loi_diseases$diseases <- str_replace_all(loi_diseases$diseases , "\"", "")      
 #Frequency Table
 loi_count <- loi_diseases
 loi_count$tally <- 1
-loi_count <- aggregate(tally~doc_id+serial_number+evaluation_score+diseases,loi_count,sum)
+loi_count <- aggregate(tally~doc_id+serial_number+batch_number+diseases,loi_count,sum)
 #sum(loi_count$tally) #to check if sum of diseases are equal 
 
 #Column
-loi_column <- cast(loi_count,doc_id+serial_number+evaluation_score~diseases)
+loi_column <- cast(loi_count,doc_id+serial_number+batch_number~diseases)
 
 ##########################################################################################################
 
@@ -116,11 +116,11 @@ loi_country$country <- str_replace_all(loi_country$country , "\"", "")          
 #Frequency Table
 loi_count_2 <- loi_country
 loi_count_2$tally <- 1
-loi_count_2 <- aggregate(tally~doc_id+serial_number+evaluation_score+country,loi_count_2,sum)
+loi_count_2 <- aggregate(tally~doc_id+serial_number+batch_number+country,loi_count_2,sum)
 #sum(loi_count_2$tally) #to check if sum of diseases are equal 
 
 #Column
-loi_column_2 <- cast(loi_count_2,doc_id+serial_number+evaluation_score~country)
+loi_column_2 <- cast(loi_count_2,doc_id+serial_number+batch_number~country)
 names(loi_column_2)[names(loi_column_2) == "character(0"] <- "unknown"
 #########################################################################################################
 
@@ -132,16 +132,16 @@ loi_count_3  <- merge(loi_count_2,wb,all.x = TRUE,by="country")
 loi_count_3$tally <- 1
 
 #Frequency Table - WHO_Region
-loi_count_3_1 <- aggregate(tally~doc_id+serial_number+evaluation_score+who_region,loi_count_3,sum,na.action = na.pass)
+loi_count_3_1 <- aggregate(tally~doc_id+serial_number+batch_number+who_region,loi_count_3,sum,na.action = na.pass)
 
 #Frequency Table - WB Income Group
-loi_count_3_2 <- aggregate(tally~doc_id+serial_number+evaluation_score+wb_income_group,loi_count_3,sum,na.action = na.pass)
+loi_count_3_2 <- aggregate(tally~doc_id+serial_number+batch_number+wb_income_group,loi_count_3,sum,na.action = na.pass)
 
 #Column - WHO_Region
-loi_column_3 <- cast(loi_count_3_1,doc_id+serial_number+evaluation_score~who_region,na.action = na.pass)
+loi_column_3 <- cast(loi_count_3_1,doc_id+serial_number+batch_number~who_region,na.action = na.pass)
 
 #Column - WB Income Group
-loi_column_4 <- cast(loi_count_3_2,doc_id+serial_number+evaluation_score~wb_income_group,na.action = na.pass)
+loi_column_4 <- cast(loi_count_3_2,doc_id+serial_number+batch_number~wb_income_group,na.action = na.pass)
 
 #########################################################################################################
 
@@ -171,12 +171,12 @@ loi_method$general_terms <- str_replace_all(loi_method$general_terms , "\"", "")
 #Frequency Table
 loi_count_method_1 <- loi_method
 loi_count_method_1$tally <- 1
-loi_count_method_1 <- aggregate(tally~doc_id+serial_number+evaluation_score+general_terms,loi_count_method_1,sum)
+loi_count_method_1 <- aggregate(tally~doc_id+serial_number+batch_number+general_terms,loi_count_method_1,sum)
 #sum(loi_count_2$tally) #to check if sum of diseases are equal 
 
 #Column
-loi_column_method_1 <- cast(loi_count_method_1,doc_id+serial_number+evaluation_score~general_terms)
-names(loi_column_method_1)[names(loi_column_method_1) == "character(0"] <- "unknown"
+loi_column_method_1 <- cast(loi_count_method_1,doc_id+serial_number+batch_number~general_terms)
+names(loi_column_method_1)[names(loi_column_method_1) == "character(0"] <- "unknown general terms"
 
 
 
@@ -201,12 +201,12 @@ loi_method_2$research_designs <- str_replace_all(loi_method_2$research_designs ,
 #Frequency Table
 loi_count_method_2 <- loi_method_2
 loi_count_method_2$tally <- 1
-loi_count_method_2 <- aggregate(tally~doc_id+serial_number+evaluation_score+research_designs,loi_count_method_2,sum)
+loi_count_method_2 <- aggregate(tally~doc_id+serial_number+batch_number+research_designs,loi_count_method_2,sum)
 #sum(loi_count_2$tally) #to check if sum of diseases are equal 
 
 #Column
-loi_column_method_2 <- cast(loi_count_method_2,doc_id+serial_number+evaluation_score~research_designs)
-names(loi_column_method_2)[names(loi_column_method_2) == "character(0"] <- "unknown"
+loi_column_method_2 <- cast(loi_count_method_2,doc_id+serial_number+batch_number~research_designs)
+names(loi_column_method_2)[names(loi_column_method_2) == "character(0"] <- "unknown research design"
 
 
 
@@ -231,12 +231,12 @@ loi_method_3$data_sources <- str_replace_all(loi_method_3$data_sources , "\"", "
 #Frequency Table
 loi_count_method_3 <- loi_method_3
 loi_count_method_3$tally <- 1
-loi_count_method_3 <- aggregate(tally~doc_id+serial_number+evaluation_score+data_sources,loi_count_method_3,sum)
+loi_count_method_3 <- aggregate(tally~doc_id+serial_number+batch_number+data_sources,loi_count_method_3,sum)
 #sum(loi_count_2$tally) #to check if sum of diseases are equal 
 
 #Column
-loi_column_method_3 <- cast(loi_count_method_3,doc_id+serial_number+evaluation_score~data_sources)
-names(loi_column_method_3)[names(loi_column_method_3) == "character(0"] <- "unknown"
+loi_column_method_3 <- cast(loi_count_method_3,doc_id+serial_number+batch_number~data_sources)
+names(loi_column_method_3)[names(loi_column_method_3) == "character(0"] <- "unknown data sources"
 
 
 
@@ -261,17 +261,17 @@ loi_method_4$qual_methods <- str_replace_all(loi_method_4$qual_methods , "\"", "
 #Frequency Table
 loi_count_method_4 <- loi_method_4
 loi_count_method_4$tally <- 1
-loi_count_method_4 <- aggregate(tally~doc_id+serial_number+evaluation_score+qual_methods,loi_count_method_4,sum)
+loi_count_method_4 <- aggregate(tally~doc_id+serial_number+batch_number+qual_methods,loi_count_method_4,sum)
 #sum(loi_count_2$tally) #to check if sum of diseases are equal 
 
 #Column
-loi_column_method_4 <- cast(loi_count_method_4,doc_id+serial_number+evaluation_score~qual_methods)
-names(loi_column_method_4)[names(loi_column_method_4) == "character(0"] <- "unknown"
+loi_column_method_4 <- cast(loi_count_method_4,doc_id+serial_number+batch_number~qual_methods)
+names(loi_column_method_4)[names(loi_column_method_4) == "character(0"] <- "unknown qualitative methods"
 
 
 
 #Research Method - Quantitative Methods 
-quan_methods <- tolower(method[,4])
+quan_methods <- tolower(method[,5])
 quan_methods <- as.data.frame(quan_methods)
 quan_methods <- quan_methods[rowSums(quan_methods=="")!=ncol(quan_methods), ]
 quan_methods <- paste(quan_methods,collapse = "|")
@@ -291,17 +291,21 @@ loi_method_5$quan_methods <- str_replace_all(loi_method_5$quan_methods , "\"", "
 #Frequency Table
 loi_count_method_5 <- loi_method_5
 loi_count_method_5$tally <- 1
-loi_count_method_5 <- aggregate(tally~doc_id+serial_number+evaluation_score+quan_methods,loi_count_method_5,sum)
+loi_count_method_5 <- aggregate(tally~doc_id+serial_number+batch_number+quan_methods,loi_count_method_5,sum)
 #sum(loi_count_2$tally) #to check if sum of diseases are equal 
 
 #Column
-loi_column_method_5 <- cast(loi_count_method_5,doc_id+serial_number+evaluation_score~quan_methods)
-names(loi_column_method_5)[names(loi_column_method_5) == "character(0"] <- "unknown"
+loi_column_method_5 <- cast(loi_count_method_5,doc_id+serial_number+batch_number~quan_methods)
+names(loi_column_method_5)[names(loi_column_method_5) == "character(0"] <- "unknown quantitative methods"
 
 #########################################################################################################
 
 #Merge all to form a wide table
-loi_all_methods <- merge(merge(merge(loi_column_method_1,loi_column_method_2),merge(loi_column_method_3,loi_column_method_4)),loi_column_method_5)
+loi_all_methods <- merge(merge(merge(loi_column_method_1,loi_column_method_2),
+                    merge(loi_column_method_3,loi_column_method_4))
+                        ,loi_column_method_5) 
+
+loi_all <- merge(loi_all,loi_all_methods)
 
 #########################################################################################################
 
@@ -309,17 +313,122 @@ loi_all_methods <- merge(merge(merge(loi_column_method_1,loi_column_method_2),me
 participants_list <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Participants List.csv")
 names(participants_list)[names(participants_list) == "ï..serial_number"] <- "serial_number"
 
+#Data Clean
+participants_list$country <- tolower(participants_list$country)
+participants_list$country <- str_replace_all(participants_list$country,"united states of america","united states")
+participants_list$country <- str_replace_all(participants_list$country,"usa","united states")
+participants_list$country <- str_replace_all(participants_list$country,"republic of the philippines","philippines")
+participants_list$country <- str_replace_all(participants_list$country,"british","united kingdom")
+participants_list$country <- str_replace_all(participants_list$country,"uk","united kingdom")
+participants_list$country <- str_replace_all(participants_list$country,"england","united kingdom")
+participants_list$country <- str_replace_all(participants_list$country,"p.r.","")
+participants_list$country <- str_replace_all(participants_list$country,"zimbabwean","zimbabwe")
+participants_list$country <- str_replace_all(participants_list$country,"cameroonian","cameroon")
+participants_list$country <- str_replace_all(participants_list$country,"(?<=ia).*","")
+participants_list$country <- str_replace_all(participants_list$country,"the gambia","gambia")
+participants_list$country <- str_replace_all(participants_list$country,"somali$","somalia")
+participants_list$country <- str_replace_all(participants_list$country,"of cameroon","cameroon")
+participants_list$country <- str_replace_all(participants_list$country,"of congo","of the congo")
+participants_list$country <- str_replace_all(participants_list$country,"or the congo","of the congo")
+participants_list$country <- str_replace_all(participants_list$country,"srilankan","sri lanka")
+
+participants_list$country <- str_replace_all(participants_list$country,"\\/yes","")
+participants_list$country <- str_replace_all(participants_list$country,"\\/\\s+yes","")
+participants_list$country <- str_replace_all(participants_list$country,"citizen","")
+participants_list$country <- str_replace_all(participants_list$country,"with.*","")
+participants_list$country <- str_replace_all(participants_list$country,"nationality.*","")
+participants_list$country <- str_replace_all(participants_list$country,"\\(.*","")
+
+participants_list$country <- str_replace_all(participants_list$country,"argentina\\/italy","c\\(\\'\\'argentina\\'\\'\\,\\'\\'italy\\'\\'\\)")
+participants_list$country <- str_replace_all(participants_list$country,"guinea\\/canada","c\\(\\'\\'guinea\\'\\'\\,\\'\\'canada\\'\\'\\)")
+participants_list$country <- str_replace_all(participants_list$country,"united kingdom\\s+\\&\\s+ghana","c\\(\\'\\'united kingdom\\'\\'\\,\\'\\'ghana\\'\\'\\)")
+participants_list$country <- str_replace_all(participants_list$country,"united states\\s+\\/\\s+spain","c\\(\\'\\'united states\\'\\'\\,\\'\\'spain\\'\\'\\)")
+
+
 loi_participants <- merge(participants_list,loi_all)
+loi_all$no <- 1:nrow(loi_all)
+loi_all_part <- merge(loi_participants,loi_all, all=T)
 
-#Sample Visualisation 
-ggplot(data.frame(loi_participants$Gender), aes(x=loi_participants$Gender)) +
-  geom_bar()
+n_occur <- as.data.frame(table(loi_all_part$no))
+names(n_occur)[names(n_occur) == "Var1"] <- "no"
+repeat_occur <- n_occur[n_occur$Freq>1,]
 
-ggplot(data.frame(loi_participants$Year.of..birth), aes(x=loi_participants$Year.of..birth)) +
-  geom_bar()
+loi_all_part <- loi_all_part[-which(duplicated(loi_all_part$no)),]
 
-ggplot(data.frame(loi_participants$From.which.country.are.you.a.citizen.passport.holder.), aes(x=loi_participants$From.which.country.are.you.a.citizen.passport.holder.)) +
+loi_all_part$birth_year[is.na(loi_all_part$birth_year)] <- 0
+loi_all_part$birth_year <- str_replace_all(loi_all_part$birth_year,"0$","Unknown")
+
+loi_all_part$gender[is.na(loi_all_part$gender)] <- 0
+loi_all_part$gender <- str_replace_all(loi_all_part$gender,"0","Unknown")
+
+loi_all_part$country[is.na(loi_all_part$country)] <- 0
+loi_all_part$country <- str_replace_all(loi_all_part$country,"0","Unknown")
+
+loi_all_part$academic_qualification[is.na(loi_all_part$academic_qualification)] <- 0
+loi_all_part$academic_qualification <- str_replace_all(loi_all_part$academic_qualification,"0","Unknown")
+
+loi_all_part$prof_category[is.na(loi_all_part$prof_category)] <- 0
+loi_all_part$prof_category <- str_replace_all(loi_all_part$prof_category,"0","Unknown")
+
+#Data Visualisation 
+
+#Gender
+ggplot(data.frame(loi_all_part$gender), aes(x=loi_all_part$gender)) +
   geom_bar() + coord_flip()
-barplot(table(loi_participants$From.which.country.are.you.a.citizen.passport.holder.))
 
+#Birth Year
+ggplot(data.frame(loi_all_part$birth_year), aes(x=loi_all_part$birth_year)) +
+  geom_bar() + coord_flip()
+
+#Country
+participants_country <-  as.data.frame(loi_all_part$country)
+names(participants_country)[names(participants_country) == "loi_all_part$country"] <- "country"
+
+participants_country <- cSplit(participants_country, "country", ",", "long") 
+
+participants_country$country <- str_replace_all(participants_country$country, "c\\(", "")       #Remove c(
+participants_country$country <- str_replace_all(participants_country$country, "\\)", "")        #Remove )
+participants_country$country <- str_replace_all(participants_country$country, "\\'", "")        #Remove "
+
+ggplot(data.frame(participants_country), aes(x=country)) +
+  geom_bar() + coord_flip()
+
+
+#Country Match
+test <- subset(loi_all_part,select=c("country","serial_number","doc_id","batch_number"))
+names(test)[names(test) == "country"] <- "birth_country"
+
+test <- merge(loi_count_2,test,all=T)
+
+test$check <-ifelse(test$birth_country == test$country,print("match"),print("non-match"))
+
+ggplot(data.frame(test$check), aes(x=test$check)) +
+  geom_bar() + coord_flip()
+
+
+#Academic Qualification
+acad_qual <-  as.data.frame(loi_all_part$academic_qualification)
+names(acad_qual)[names(acad_qual) == "loi_all_part$academic_qualification"] <- "academic_qualification"
+
+acad_qual <- cSplit(acad_qual, "academic_qualification", ",", "long") 
+
+acad_qual$academic_qualification <- str_replace_all(acad_qual$academic_qualification, "c\\(", "")       #Remove c(
+acad_qual$academic_qualification <- str_replace_all(acad_qual$academic_qualification, "\\)", "")        #Remove )
+acad_qual$academic_qualification <- str_replace_all(acad_qual$academic_qualification, "\\'", "")        #Remove "
+
+ggplot(data.frame(acad_qual), aes(x=academic_qualification)) +
+  geom_bar() + coord_flip()
+
+#Professional Category
+prof_cat <-  as.data.frame(loi_all_part$prof_category)
+names(prof_cat)[names(prof_cat) == "loi_all_part$prof_category"] <- "prof_category"
+
+prof_cat <- cSplit(prof_cat, "prof_category", ",", "long") 
+
+prof_cat$prof_category <- str_replace_all(prof_cat$prof_category, "c\\(", "")       #Remove c(
+prof_cat$prof_category <- str_replace_all(prof_cat$prof_category, "\\)", "")        #Remove )
+prof_cat$prof_category <- str_replace_all(prof_cat$prof_category, "\\'", "")        #Remove "
+
+ggplot(data.frame(prof_cat), aes(x=prof_category)) +
+  geom_bar() + coord_flip()
 
