@@ -391,6 +391,9 @@ error_strategies$MOOC_Strategy <- str_replace_all(error_strategies$MOOC_Strategy
 ggplot(error_strategies, aes(fill=Literature_Strategy, y=Percentage, x=MOOC_Strategy)) + 
   geom_bar(position="stack", stat="identity") + coord_flip()
 
+#Merge All
+loi_all <- merge(loi_all,loi_column_strategies)
+
 #########################################################################################################
 
 #Excel - Participants List 
