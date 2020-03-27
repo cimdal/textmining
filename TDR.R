@@ -307,6 +307,90 @@ loi_all_methods <- merge(merge(merge(loi_column_method_1,loi_column_method_2),
 
 loi_all <- merge(loi_all,loi_all_methods)
 
+#Data Visualisation - Percentage Missing for Research Methods
+error_general_terms <- prop.table(table(loi_count_method_1$general_terms))*100
+
+error <- as.data.frame(error_general_terms)
+error$type <- "general_terms"
+
+error_research_designs <- as.data.frame(prop.table(table(loi_count_method_2$research_designs))*100)
+error <- rbind.fill(error,error_research_designs)
+error$type[is.na(error$type)] <- 0
+error$type <- str_replace_all(error$type,"0","research_design")
+
+error_data_sources <- as.data.frame(prop.table(table(loi_count_method_3$data_sources))*100)
+error <- rbind.fill(error,error_data_sources)
+error$type[is.na(error$type)] <- 0
+error$type <- str_replace_all(error$type,"0","data_sources")
+
+error_qual_methods <- as.data.frame(prop.table(table(loi_count_method_4$qual_methods))*100)
+error <- rbind.fill(error,error_qual_methods)
+error$type[is.na(error$type)] <- 0
+error$type <- str_replace_all(error$type,"0","qual_methods")
+
+error_quan_methods <- as.data.frame(prop.table(table(loi_count_method_5$quan_methods))*100)
+error <- rbind.fill(error,error_quan_methods)
+error$type[is.na(error$type)] <- 0
+error$type <- str_replace_all(error$type,"0","quan_methods")
+
+error$Var1 <- str_replace_all(error$Var1,"character\\(0","unidentified research method")
+
+names(error)[names(error) == "Freq"] <- "Percentage"
+names(error)[names(error) == "Var1"] <- "Research_Method"
+
+ggplot(error, aes(fill=Research_Method, y=Percentage, x=type)) + 
+  geom_bar(position="stack", stat="identity") 
+
+#########################################################################################################
+
+#IR Strategies
+
+ir_strategies <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Strategies.csv")
+
+#IR Strategies - MOOC 
+ir_strategies_mooc <- tolower(ir_strategies[,2])
+ir_strategies_mooc <- as.data.frame(ir_strategies_mooc)
+ir_strategies_mooc <- ir_strategies_mooc[rowSums(ir_strategies_mooc=="")!=ncol(ir_strategies_mooc), ]
+ir_strategies_mooc <- paste(ir_strategies_mooc,collapse = "|")
+ir_strategies_mooc <- str_replace_all(ir_strategies_mooc , " ", "\\\\s+") 
+
+#Text Mining - IR Strategies - MOOC 
+loi_strategies <- loi_raw
+loi_strategies$mooc_strategy <- str_extract_all(loi_raw$text, ir_strategies_mooc)
+loi_strategies$diseases <- NULL
+
+loi_strategies <- cSplit(loi_strategies, "mooc_strategy", ",", "long") 
+
+loi_strategies$mooc_strategy <- str_replace_all(loi_strategies$mooc_strategy ,"c\\(","")          #Remove c(
+loi_strategies$mooc_strategy <- str_replace_all(loi_strategies$mooc_strategy ,"\\)","")           #Remove )
+loi_strategies$mooc_strategy <- str_replace_all(loi_strategies$mooc_strategy ,"\"","")            #Remove "
+
+#Frequency Table
+loi_count_strategies <- loi_strategies
+loi_count_strategies$tally <- 1
+loi_count_strategies <- aggregate(tally~doc_id+serial_number+batch_number+mooc_strategy,loi_count_strategies,sum)
+
+#Column
+loi_column_strategies <- cast(loi_count_strategies,doc_id+serial_number+batch_number~mooc_strategy)
+names(loi_column_strategies)[names(loi_column_strategies) == "character(0"] <- "unidentified IR strategy"
+
+names(loi_column_strategies)
+
+#Data Visualisation - Percentage Missing for MOOC Strategy 
+error_strategies <- as.data.frame(prop.table(table(loi_count_strategies$mooc_strategy))*100)
+names(error_strategies)[names(error_strategies) == "Var1"] <- "MOOC_Strategy"
+
+ir_strategies$MOOC_Strategy <- tolower(ir_strategies[,2])
+ir_strategies$MOOC_Strategy <- str_replace_all(ir_strategies$MOOC_Strategy,"character\\(0\\)","character\\(0" )
+
+error_strategies <- merge(error_strategies,ir_strategies)
+names(error_strategies)[names(error_strategies) == "Freq"] <- "Percentage"
+
+error_strategies$MOOC_Strategy <- str_replace_all(error_strategies$MOOC_Strategy,"character\\(0","unidentified strategy")
+
+ggplot(error_strategies, aes(fill=Literature_Strategy, y=Percentage, x=MOOC_Strategy)) + 
+  geom_bar(position="stack", stat="identity") + coord_flip()
+
 #########################################################################################################
 
 #Excel - Participants List 
@@ -431,4 +515,6 @@ prof_cat$prof_category <- str_replace_all(prof_cat$prof_category, "\\'", "")    
 
 ggplot(data.frame(prof_cat), aes(x=prof_category)) +
   geom_bar() + coord_flip()
+
+
 
