@@ -357,7 +357,7 @@ ggplot(error, aes(fill=Research_Method, y=Percentage, x=type)) +
 
 #Excel - IR Strategies
 
-ir_strategies <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Strategies.csv")
+ir_strategies <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/IR Strategies_Global.csv")
 
 #IR Strategies - MOOC 
 ir_strategies_mooc <- tolower(ir_strategies[,2])
@@ -406,7 +406,7 @@ ggplot(error_strategies, aes(fill=Literature_Strategy, y=Percentage, x=MOOC_Stra
 
 #########################################################################################################
 
-#Excel - IR Strategies
+#Excel - Outcomes
 
 outcomes <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Outcomes.csv")
 names(outcomes)[names(outcomes) == "ï..Outcomes"] <- "outcomes"
