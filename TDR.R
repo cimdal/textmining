@@ -1,5 +1,8 @@
 rm(list = ls()) 
 
+setwd("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1")
+
+
 library(readtext)
 library(stringr)
 library(tidyverse)
@@ -21,10 +24,6 @@ loi_raw_6 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group
 #Read Excel - Country, WHO Region, WB Income Group
 wb <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/TDR - Excel.csv")
 names(wb)[names(wb) == "ï..country"] <- "country"
-
-#Research Methods 
-method <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Research Methods.csv")
-names(method)[names(method) == "ï..General_Terms"] <- "General_Terms"
 
 #Converting to Data Frame
 loi_raw_1 <- as.data.frame(loi_raw_1)
@@ -149,6 +148,10 @@ loi_column_4 <- cast(loi_count_3_2,doc_id+serial_number+batch_number~wb_income_g
 loi_all <- merge(merge(loi_column,loi_column_2),merge(loi_column_3,loi_column_4))
 
 #########################################################################################################
+
+#Research Methods 
+method <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Research Methods.csv")
+names(method)[names(method) == "ï..General_Terms"] <- "General_Terms"
 
 #Research Method - General Terms
 general_terms <- tolower(method[,1])
@@ -343,7 +346,7 @@ ggplot(error, aes(fill=Research_Method, y=Percentage, x=type)) +
 
 #########################################################################################################
 
-#IR Strategies
+#Excel - IR Strategies
 
 ir_strategies <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Strategies.csv")
 
@@ -391,8 +394,50 @@ error_strategies$MOOC_Strategy <- str_replace_all(error_strategies$MOOC_Strategy
 ggplot(error_strategies, aes(fill=Literature_Strategy, y=Percentage, x=MOOC_Strategy)) + 
   geom_bar(position="stack", stat="identity") + coord_flip()
 
+
 #Merge All
 loi_all <- merge(loi_all,loi_column_strategies)
+
+#########################################################################################################
+
+#Excel - IR Strategies
+
+outcomes <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Outcomes.csv")
+names(outcomes)[names(outcomes) == "ï..Outcomes"] <- "outcomes"
+outcomes$other_terms <- tolower(outcomes$other_terms)
+
+other_terms <- tolower(outcomes[,2])
+other_terms <- as.data.frame(other_terms)
+other_terms <- other_terms[rowSums(other_terms=="")!=ncol(other_terms), ]
+other_terms <- paste(other_terms,collapse = "|")
+other_terms <- str_replace_all(other_terms, " ", "\\\\s+") 
+
+#Text Mining - IR Strategies - MOOC 
+loi_outcome <- loi_raw
+loi_outcome$other_terms <- str_extract_all(loi_raw$text, other_terms)
+loi_outcome$diseases <- NULL
+
+loi_outcome <- cSplit(loi_outcome, "other_terms", ",", "long") 
+
+loi_outcome$other_terms <- str_replace_all(loi_outcome$other_terms ,"c\\(","")          #Remove c(
+loi_outcome$other_terms <- str_replace_all(loi_outcome$other_terms ,"\\)","")           #Remove )
+loi_outcome$other_terms <- str_replace_all(loi_outcome$other_terms ,"\"","")            #Remove "
+loi_outcome$other_terms <- str_replace_all(loi_outcome$other_terms ,"character\\(0","character\\(0\\)")           
+    
+loi_outcome <- merge(loi_outcome,outcomes, by="other_terms")
+
+#Frequency Table
+loi_count_outcome <- loi_outcome
+loi_count_outcome$tally <- 1
+loi_count_outcome <- aggregate(tally~doc_id+serial_number+batch_number+outcomes,loi_outcome,sum)
+#sum(loi_count_2$tally) #to check if sum of diseases are equal 
+
+#Column
+loi_column_outcome <- cast(loi_count_outcome,doc_id+serial_number+batch_number~outcomes)
+
+loi_all <- merge(loi_all,loi_column_outcome)
+
+write.csv(loi_all,"loi_all.csv")
 
 #########################################################################################################
 
@@ -518,6 +563,4 @@ prof_cat$prof_category <- str_replace_all(prof_cat$prof_category, "\\'", "")    
 
 ggplot(data.frame(prof_cat), aes(x=prof_category)) +
   geom_bar() + coord_flip()
-
-
 
