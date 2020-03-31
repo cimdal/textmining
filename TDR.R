@@ -92,7 +92,9 @@ loi_count <- aggregate(tally~doc_id+serial_number+batch_number+diseases,loi_coun
 
 #Column
 loi_column <- cast(loi_count,doc_id+serial_number+batch_number~diseases)
+loi_column$average <- rowMeans(loi_column[,4:23],na.rm=T)
 
+y <- ifelse(loi_column[,4:23] >= loi_column$average,loi_column[,4:23]*1,loi_column[,4:23]*0)
 ##########################################################################################################
 
 #Country - Excel
