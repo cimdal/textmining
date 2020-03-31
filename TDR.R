@@ -1,8 +1,5 @@
 rm(list = ls()) 
 
-setwd("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1")
-
-
 library(readtext)
 library(stringr)
 library(tidyverse)
@@ -22,8 +19,8 @@ loi_raw_5 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group
 loi_raw_6 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 6")
 
 #Read Excel - Country, WHO Region, WB Income Group
-wb <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/TDR - Excel.csv")
-names(wb)[names(wb) == "ï..country"] <- "country"
+country_wb_who <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Country List.csv")
+names(country_wb_who)[names(country_wb_who) == "ï..country"] <- "country"
 
 #Converting to Data Frame
 loi_raw_1 <- as.data.frame(loi_raw_1)
@@ -92,14 +89,17 @@ loi_count <- aggregate(tally~doc_id+serial_number+batch_number+diseases,loi_coun
 
 #Column
 loi_column <- cast(loi_count,doc_id+serial_number+batch_number~diseases)
-loi_column$average <- rowMeans(loi_column[,4:23],na.rm=T)
 
-y <- ifelse(loi_column[,4:23] >= loi_column$average,loi_column[,4:23]*1,loi_column[,4:23]*0)
+#Average - Disease 
+loi_column$average_disease <- rowMeans(loi_column[,4:23],na.rm=T)
+bool_disease <- ifelse(loi_column[,4:23] >= loi_column$average_disease,1,NA)
+bool_disease <- loi_column[,4:23]*bool_disease[,1:20]
+loi_column[,4:23] <- bool_disease
+
 ##########################################################################################################
 
 #Country - Excel
-
-country_list <- wb[,2]
+country_list <- country_wb_who[,2]
 country_list <- paste(country_list,collapse = "|")
 country_list <- str_replace_all(country_list , " ", "\\\\s+") 
 
@@ -122,14 +122,21 @@ loi_count_2 <- aggregate(tally~doc_id+serial_number+batch_number+country,loi_cou
 
 #Column
 loi_column_2 <- cast(loi_count_2,doc_id+serial_number+batch_number~country)
-names(loi_column_2)[names(loi_column_2) == "character(0"] <- "unknown"
+names(loi_column_2)[names(loi_column_2) == "character(0"] <- "unidentified country"
+
+#Average - Country
+loi_column_2$average_country <- rowMeans(loi_column_2[,4:50],na.rm=T)
+bool_country <- ifelse(loi_column_2[,4:50] >= loi_column_2$average_country,1,NA)
+bool_country <- loi_column_2[,4:50]*bool_country[,1:47]
+loi_column_2[,4:50] <- bool_country
+
 #########################################################################################################
 
-#WHO_Region & WB Income Group - Excel
+#WHO_Region & country_wb_who Income Group - Excel
 
 #Merge
 loi_count_2$country <- str_replace_all(loi_count_2$country,"character\\(0","unknown")
-loi_count_3  <- merge(loi_count_2,wb,all.x = TRUE,by="country")
+loi_count_3  <- merge(loi_count_2,country_wb_who,all.x = TRUE,by="country")
 loi_count_3$tally <- 1
 
 #Frequency Table - WHO_Region
@@ -181,7 +188,7 @@ loi_count_method_1 <- aggregate(tally~doc_id+serial_number+batch_number+general_
 
 #Column
 loi_column_method_1 <- cast(loi_count_method_1,doc_id+serial_number+batch_number~general_terms)
-names(loi_column_method_1)[names(loi_column_method_1) == "character(0"] <- "unknown general terms"
+names(loi_column_method_1)[names(loi_column_method_1) == "character(0"] <- "unidentified general terms"
 
 
 
@@ -211,9 +218,7 @@ loi_count_method_2 <- aggregate(tally~doc_id+serial_number+batch_number+research
 
 #Column
 loi_column_method_2 <- cast(loi_count_method_2,doc_id+serial_number+batch_number~research_designs)
-names(loi_column_method_2)[names(loi_column_method_2) == "character(0"] <- "unknown research design"
-
-
+names(loi_column_method_2)[names(loi_column_method_2) == "character(0"] <- "unidentified research design"
 
 #Research Method - Data Sources 
 data_sources <- tolower(method[,3])
@@ -241,7 +246,7 @@ loi_count_method_3 <- aggregate(tally~doc_id+serial_number+batch_number+data_sou
 
 #Column
 loi_column_method_3 <- cast(loi_count_method_3,doc_id+serial_number+batch_number~data_sources)
-names(loi_column_method_3)[names(loi_column_method_3) == "character(0"] <- "unknown data sources"
+names(loi_column_method_3)[names(loi_column_method_3) == "character(0"] <- "unidentified data sources"
 
 
 
@@ -271,9 +276,11 @@ loi_count_method_4 <- aggregate(tally~doc_id+serial_number+batch_number+qual_met
 
 #Column
 loi_column_method_4 <- cast(loi_count_method_4,doc_id+serial_number+batch_number~qual_methods)
-names(loi_column_method_4)[names(loi_column_method_4) == "character(0"] <- "unknown qualitative methods"
+names(loi_column_method_4)[names(loi_column_method_4) == "character(0"] <- "unidentified qualitative methods"
 
-
+#fgd to full term
+loi_column_method_4[,9] <- rowSums(loi_column_method_4[,c("focus group discussion", "fgd")], na.rm=TRUE)
+loi_column_method_4[,8] <- NULL
 
 #Research Method - Quantitative Methods 
 quan_methods <- tolower(method[,5])
@@ -301,7 +308,7 @@ loi_count_method_5 <- aggregate(tally~doc_id+serial_number+batch_number+quan_met
 
 #Column
 loi_column_method_5 <- cast(loi_count_method_5,doc_id+serial_number+batch_number~quan_methods)
-names(loi_column_method_5)[names(loi_column_method_5) == "character(0"] <- "unknown quantitative methods"
+names(loi_column_method_5)[names(loi_column_method_5) == "character(0"] <- "unidentified quantitative methods"
 
 #########################################################################################################
 
@@ -379,7 +386,8 @@ loi_count_strategies <- aggregate(tally~doc_id+serial_number+batch_number+mooc_s
 loi_column_strategies <- cast(loi_count_strategies,doc_id+serial_number+batch_number~mooc_strategy)
 names(loi_column_strategies)[names(loi_column_strategies) == "character(0"] <- "unidentified IR strategy"
 
-names(loi_column_strategies)
+#Merge All
+loi_all <- merge(loi_all,loi_column_strategies)
 
 #Data Visualisation - Percentage Missing for MOOC Strategy 
 error_strategies <- as.data.frame(prop.table(table(loi_count_strategies$mooc_strategy))*100)
@@ -395,10 +403,6 @@ error_strategies$MOOC_Strategy <- str_replace_all(error_strategies$MOOC_Strategy
 
 ggplot(error_strategies, aes(fill=Literature_Strategy, y=Percentage, x=MOOC_Strategy)) + 
   geom_bar(position="stack", stat="identity") + coord_flip()
-
-
-#Merge All
-loi_all <- merge(loi_all,loi_column_strategies)
 
 #########################################################################################################
 
@@ -565,4 +569,6 @@ prof_cat$prof_category <- str_replace_all(prof_cat$prof_category, "\\'", "")    
 
 ggplot(data.frame(prof_cat), aes(x=prof_category)) +
   geom_bar() + coord_flip()
+
+
 
