@@ -11,15 +11,15 @@ library(textclean)
 library(reshape)
 
 #Read PDF
-loi_raw_1 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 1")
-loi_raw_2 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 2")
-loi_raw_3 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 3")
-loi_raw_4 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 4")
-loi_raw_5 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 5")
-loi_raw_6 <- readtext::readtext("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/LOI/Batch 6")
+loi_raw_1 <- readtext::readtext("LOI/Batch 1")
+loi_raw_2 <- readtext::readtext("LOI/Batch 2")
+loi_raw_3 <- readtext::readtext("LOI/Batch 3")
+loi_raw_4 <- readtext::readtext("LOI/Batch 4")
+loi_raw_5 <- readtext::readtext("LOI/Batch 5")
+loi_raw_6 <- readtext::readtext("LOI/Batch 6")
 
 #Read Excel - Country, WHO Region, WB Income Group
-country_wb_who <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Country List.csv")
+country_wb_who <- read.csv("Country List.csv")
 names(country_wb_who)[names(country_wb_who) == "ï..country"] <- "country"
 
 #Converting to Data Frame
@@ -159,7 +159,7 @@ loi_all <- merge(merge(loi_column,loi_column_2),merge(loi_column_3,loi_column_4)
 #########################################################################################################
 
 #Research Methods 
-method <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Research Methods.csv")
+method <- read.csv("Research Methods.csv")
 names(method)[names(method) == "ï..General_Terms"] <- "General_Terms"
 
 #Research Method - General Terms
@@ -357,7 +357,7 @@ ggplot(error, aes(fill=Research_Method, y=Percentage, x=type)) +
 
 #Excel - IR Strategies
 
-ir_strategies <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/IR Strategies_Global.csv")
+ir_strategies <- read.csv("IR Strategies_Global.csv")
 
 #IR Strategies - MOOC 
 ir_strategies_mooc <- tolower(ir_strategies[,2])
@@ -408,7 +408,7 @@ ggplot(error_strategies, aes(fill=Literature_Strategy, y=Percentage, x=MOOC_Stra
 
 #Excel - Outcomes
 
-outcomes <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Outcomes.csv")
+outcomes <- read.csv("Outcomes.csv")
 names(outcomes)[names(outcomes) == "ï..Outcomes"] <- "outcomes"
 outcomes$other_terms <- tolower(outcomes$other_terms)
 
@@ -448,7 +448,7 @@ write.csv(loi_all,"loi_all.csv")
 #########################################################################################################
 
 #Excel - Participants List 
-participants_list <- read.csv("C:/Users/asus/OneDrive - Sunway Education Group/UNU - IIGH/TDR/Stage 1/Participants List.csv")
+participants_list <- read.csv("Participants List.csv")
 names(participants_list)[names(participants_list) == "ï..serial_number"] <- "serial_number"
 
 #Data Clean
