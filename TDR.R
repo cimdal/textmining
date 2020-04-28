@@ -4,6 +4,7 @@ library(readtext)
 library(stringr)
 library(tidyverse)
 library(dplyr)
+library(plyr)
 library(splitstackshape)
 library(readxl)
 library(psych)
@@ -386,6 +387,9 @@ loi_count_strategies <- aggregate(tally~doc_id+serial_number+batch_number+mooc_s
 loi_column_strategies <- cast(loi_count_strategies,doc_id+serial_number+batch_number~mooc_strategy)
 names(loi_column_strategies)[names(loi_column_strategies) == "character(0"] <- "unidentified IR strategy"
 
+#To find any similarities in colnames before merging
+#colname_diff <- colnames(loi_all) %in% colnames(loi_column_strategies)
+
 #Merge All
 loi_all <- merge(loi_all,loi_column_strategies)
 
@@ -443,7 +447,11 @@ loi_column_outcome <- cast(loi_count_outcome,doc_id+serial_number+batch_number~o
 
 loi_all <- merge(loi_all,loi_column_outcome)
 
-write.csv(loi_all,"loi_all.csv")
+setwd(" ")
+#write.csv(loi_all,"loi_all.csv")
+
+summary <- summary(loi_all)
+#write.csv(summary,"Summary.csv")
 
 #########################################################################################################
 
@@ -507,6 +515,8 @@ loi_all_part$academic_qualification <- str_replace_all(loi_all_part$academic_qua
 
 loi_all_part$prof_category[is.na(loi_all_part$prof_category)] <- 0
 loi_all_part$prof_category <- str_replace_all(loi_all_part$prof_category,"0","Unknown")
+
+#write.csv(loi_all_part,"loi_all_part.csv")
 
 #Data Visualisation 
 
