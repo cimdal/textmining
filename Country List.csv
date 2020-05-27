@@ -1,0 +1,220 @@
+﻿country,country_corrected,who_region,wb_income_group
+afghanistan,afghanistan,WHO_EMRO,Low income
+albania,albania,WHO_EURO,Upper middle income
+algeria,algeria,WHO_AFRO,Upper middle income
+american samoa,american samoa,NA (WHO Region),Upper middle income
+andorra,andorra,WHO_EURO,High income
+angola,angola,WHO_AFRO,Lower middle income
+antigua and barbuda,antigua and barbuda,WHO_AMRO,High income
+argentina,argentina,WHO_AMRO,Upper middle income
+armenia,armenia,WHO_EURO,Upper middle income
+aruba,aruba,NA (WHO Region),High income
+australia,australia,WHO_WPRO,High income
+austria,austria,WHO_EURO,High income
+azerbaijan,azerbaijan,WHO_EURO,Upper middle income
+bahamas,bahamas,WHO_AMRO,High income
+bahrain,bahrain,WHO_EMRO,High income
+bangladesh,bangladesh,WHO_SEARO,Lower middle income
+barbados,barbados,WHO_AMRO,High income
+belarus,belarus,WHO_EURO,Upper middle income
+belgium,belgium,WHO_EURO,High income
+belize,belize,WHO_AMRO,Upper middle income
+benin$,benin$,WHO_AFRO,Low income
+bermuda,bermuda,NA (WHO Region),High income
+bhutan,bhutan,WHO_SEARO,Lower middle income
+bolivia,bolivia,WHO_AMRO,Lower middle income
+bosnia and herzegovina,bosnia and herzegovina,WHO_EURO,Upper middle income
+botswana,botswana,WHO_AFRO,Upper middle income
+brazil,brazil,WHO_AMRO,Upper middle income
+british virgin islands,british virgin islands,NA (WHO Region),High income
+brunei darussalam,brunei darussalam,WHO_WPRO,High income
+bulgaria,bulgaria,WHO_EURO,Upper middle income
+burkina faso,burkina faso,WHO_AFRO,Low income
+burundi,burundi,WHO_AFRO,Low income
+cabo verde,cabo verde,WHO_AFRO,Lower middle income
+cambodia,cambodia,WHO_WPRO,Lower middle income
+cameroon,camero[uo]n,WHO_AFRO,Lower middle income
+canada,canada,WHO_AMRO,High income
+cayman islands,cayman islands,NA (WHO Region),High income
+central african republic,central african republic,WHO_AFRO,Low income
+chad,chad,WHO_AFRO,Low income
+channel islands,channel islands,NA (WHO Region),High income
+chile,chile,WHO_AMRO,High income
+china,china,WHO_WPRO,Upper middle income
+colombia,colombia,WHO_AMRO,Upper middle income
+comoros,comoros,WHO_AFRO,Lower middle income
+"congo, dem. rep.","congo, dem. rep.",WHO_AFRO,Low income
+"congo, rep.","congo, rep.",NA (WHO Region),Lower middle income
+costa rica,costa rica,WHO_AMRO,Upper middle income
+côte d'ivoire,côte d'ivoire,WHO_AFRO,Lower middle income
+croatia,croatia,WHO_EURO,High income
+cuba,cuba,WHO_AMRO,Upper middle income
+curaçao,curaçao,NA (WHO Region),High income
+cyprus,cyprus,WHO_EMRO,High income
+czech republic,czech republic,WHO_EURO,High income
+denmark,denmark,WHO_EURO,High income
+djibouti,djibouti,WHO_EMRO,Lower middle income
+dominica,dominica,WHO_AMRO,Upper middle income
+dominican republic,dominican republic,WHO_AMRO,Upper middle income
+ecuador,ecuador,WHO_AMRO,Upper middle income
+egypt,egypt,WHO_EMRO,Lower middle income
+el salvador,el salvador,WHO_AMRO,Lower middle income
+equatorial guinea,equatorial guinea,WHO_AFRO,Upper middle income
+eritrea,eritrea,WHO_AFRO,Low income
+estonia,estonia,WHO_EURO,High income
+eswatini,eswatini,NA (WHO Region),Lower middle income
+ethiopia,ethiopia,WHO_AFRO,Low income
+faroe islands,faroe islands,NA (WHO Region),High income
+fiji,fiji,WHO_WPRO,Upper middle income
+finland,finland,WHO_EURO,High income
+france,france,WHO_EURO,High income
+french polynesia,french polynesia,NA (WHO Region),High income
+gabon,gabon,WHO_AFRO,Upper middle income
+gambia,gambi[ea],NA (WHO Region),Low income
+georgia,georgia,WHO_EURO,Upper middle income
+germany,germany,WHO_EURO,High income
+ghana,ghana,WHO_AFRO,Lower middle income
+gibraltar,gibraltar,NA (WHO Region),High income
+greece,greece,WHO_EURO,High income
+greenland,greenland,NA (WHO Region),High income
+grenada,grenada,WHO_AMRO,Upper middle income
+guam,guam,NA (WHO Region),High income
+guatemala,guatemala,WHO_AMRO,Upper middle income
+guinea,guin[ea],WHO_AFRO,Low income
+guinea bissau,guin[ea] bissau,WHO_AFRO,Low income
+guyana,guyana,WHO_AMRO,Upper middle income
+haiti,haiti,WHO_AMRO,Low income
+honduras,honduras,WHO_AMRO,Lower middle income
+"hong kong sar, china","hong kong sar, china",NA (WHO Region),High income
+hungary,hungary,WHO_EURO,High income
+iceland,iceland,WHO_EURO,High income
+india,india,WHO_SEARO,Lower middle income
+indonesia,indonesia,WHO_SEARO,Lower middle income
+iran,iran,WHO_EMRO,Upper middle income
+iraq,ira[qk],WHO_EMRO,Upper middle income
+ireland,ireland,WHO_EURO,High income
+isle of man,isle of man,NA (WHO Region),High income
+israel,israel,WHO_EURO,High income
+italy,italy,WHO_EURO,High income
+jamaica,jamaica,WHO_AMRO,Upper middle income
+japan,japan,WHO_WPRO,High income
+jordan,jordan,WHO_EMRO,Upper middle income
+kazakhstan,kazakhstan,WHO_EURO,Upper middle income
+kenya,kenya,WHO_AFRO,Lower middle income
+kiribati,kiribati,WHO_WPRO,Lower middle income
+"korea, dem. people's rep.","korea, dem. people's rep.",WHO_WPRO,Low income
+"korea, rep.","korea, rep.",WHO_SEARO,High income
+kosovo,kosovo,NA (WHO Region),Upper middle income
+kuwait,kuwait,WHO_EMRO,High income
+kyrgyz republic,kyrgyz republic,WHO_EURO,Lower middle income
+lao pdr,lao pdr,WHO_WPRO,Lower middle income
+latvia,latvia,WHO_EURO,High income
+lebanon,lebanon,WHO_EMRO,Upper middle income
+lesotho,lesotho,WHO_AFRO,Lower middle income
+liberia,liberia,WHO_AFRO,Low income
+libya,libya,WHO_EMRO,Upper middle income
+liechtenstein,liechtenstein,NA (WHO Region),High income
+lithuania,lithuania,WHO_EURO,High income
+luxembourg,luxembourg,WHO_EURO,High income
+macao sar,macao sar,NA (WHO Region),High income
+madagascar,madagascar,WHO_AFRO,Low income
+malawi,malawi,WHO_AFRO,Low income
+malaysia,malaysia,WHO_WPRO,Upper middle income
+maldives,maldives,WHO_SEARO,Upper middle income
+mali,mali,WHO_AFRO,Low income
+malta,malta,WHO_EURO,High income
+marshall islands,marshall islands,WHO_WPRO,Upper middle income
+mauritaniea,mauritani[ea],WHO_AFRO,Lower middle income
+mauritius,mauritius,WHO_AFRO,Upper middle income
+mexico,mexico,WHO_AMRO,Upper middle income
+micronesia,micronesia,WHO_WPRO,Lower middle income
+moldova,moldova,WHO_EURO,Lower middle income
+monaco,monaco,WHO_EURO,High income
+mongolia,mongolia,WHO_WPRO,Lower middle income
+montenegro,montenegro,WHO_EURO,Upper middle income
+morocco,morocco,WHO_EMRO,Lower middle income
+mozambique,mozambique,WHO_AFRO,Low income
+myanmar,myanmar,WHO_SEARO,Lower middle income
+namibia,namibia,WHO_AFRO,Upper middle income
+nauru,nauru,WHO_WPRO,Upper middle income
+nepal,nepal,WHO_SEARO,Low income
+netherlands,netherlands,WHO_EURO,High income
+new caledonia,new caledonia,NA (WHO Region),High income
+new zealand,new zealand,WHO_WPRO,High income
+nicaragua,nicaragua,WHO_AMRO,Lower middle income
+niger,niger\\b,WHO_AFRO,Low income
+nigeria,nigeria,WHO_AFRO,Lower middle income
+north macedonia,north macedonia,NA (WHO Region),Upper middle income
+northern mariana islands,northern mariana islands,NA (WHO Region),High income
+norway,norway,WHO_EURO,High income
+oman,oman,WHO_EMRO,High income
+pakistan,pakistan,WHO_EMRO,Lower middle income
+palau,palau,WHO_WPRO,High income
+panama,panama,WHO_AMRO,High income
+papua new guinea,papua new guinea,WHO_WPRO,Lower middle income
+paraguay,paraguay,WHO_AMRO,Upper middle income
+peru,peru,WHO_AMRO,Upper middle income
+philippines,philippines,WHO_WPRO,Lower middle income
+poland,poland,WHO_EURO,High income
+portugal,portugal,WHO_EURO,High income
+puerto rico,puerto rico,NA (WHO Region),High income
+qatar,qatar,WHO_EMRO,High income
+romania,romania,WHO_EURO,Upper middle income
+russian federation,russian federation,WHO_EURO,Upper middle income
+rwanda,rwanda,WHO_AFRO,Low income
+samoa,samoa,WHO_WPRO,Upper middle income
+san marino,san marino,WHO_EURO,High income
+são tomé and principe,são tomé and principe,WHO_AFRO,Lower middle income
+saudi arabia,saudi arabia,WHO_EMRO,High income
+senegal,senegal,WHO_AFRO,Lower middle income
+serbia,serbia,WHO_EURO,Upper middle income
+seychelles,seychelles,WHO_AFRO,High income
+sierra leone,sierra leone,WHO_AFRO,Low income
+singapore,singapore,WHO_WPRO,High income
+sint maarten (dutch part),sint maarten (dutch part),NA (WHO Region),High income
+slovak republic,slovak republic,WHO_EURO,High income
+slovenia,slovenia,WHO_EURO,High income
+solomon islands,solomon islands,WHO_WPRO,Lower middle income
+somalia,somalia,WHO_EMRO,Low income
+south africa,south africa,WHO_AFRO,Upper middle income
+south sudan,south sudan,NA (WHO Region),Low income
+spain,spain,WHO_EURO,High income
+sri lanka,sri lanka,WHO_SEARO,Upper middle income
+st. kitts and nevis,st. kitts and nevis,WHO_AMRO,High income
+st. lucia,st. lucia,WHO_AMRO,Upper middle income
+st. martin (french part),st. martin (french part),NA (WHO Region),High income
+st. vincent and the grenadines,st. vincent and the grenadines,WHO_AMRO,Upper middle income
+sudan,sudan,WHO_EMRO,Lower middle income
+suriname,suriname,WHO_AMRO,Upper middle income
+sweden,sweden,WHO_EURO,High income
+switzerland,switzerland,WHO_EURO,High income
+syrian arab republic,s[iy]rian arab republic,WHO_EMRO,Low income
+"taiwan, china","taiwan, china",NA (WHO Region),High income
+tajikistan,tajikistan,WHO_EURO,Low income
+tanzania,tanzania,WHO_AFRO,Low income
+thailand,thailand,WHO_SEARO,Upper middle income
+timor-leste,timor-leste,WHO_SEARO,Lower middle income
+togo,togo,WHO_AFRO,Low income
+tonga,tonga,WHO_WPRO,Upper middle income
+trinidad and tobago,trinidad and tobago,WHO_AMRO,High income
+tunisia,tunisia,WHO_EMRO,Lower middle income
+turkey,turkey,WHO_EURO,Upper middle income
+turkmenistan,turkmenistan,WHO_EURO,Upper middle income
+turks and caicos islands,turks and caicos islands,NA (WHO Region),High income
+tuvalu,tuvalu,WHO_WPRO,Upper middle income
+uganda,uganda,WHO_AFRO,Low income
+ukraine,ukraine,WHO_EURO,Lower middle income
+united arab emirates,united arab emirates,WHO_EMRO,High income
+united kingdom,united kingdom,WHO_EURO,High income
+united states,united states,WHO_AMRO,High income
+uruguay,uruguay,WHO_AMRO,High income
+uzbekistan,uzbekistan,WHO_EURO,Lower middle income
+vanuatu,vanuatu,WHO_WPRO,Lower middle income
+"venezuela, rb","venezuela, rb",WHO_AMRO,Upper middle income
+vietnam,vietnam,WHO_WPRO,Lower middle income
+virgin islands (u.s.),virgin islands (u.s.),NA (WHO Region),High income
+west bank and gaza,west bank and gaza,NA (WHO Region),Lower middle income
+"yemen, rep.","yemen, rep.",WHO_EMRO,Low income
+zambia,zambia,WHO_AFRO,Lower middle income
+zimbabwe,zimbabwe,WHO_AFRO,Lower middle income
+unknown,character(0),NA (WHO Region),NA (Income Group)

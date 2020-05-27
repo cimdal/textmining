@@ -1,0 +1,42 @@
+﻿General_Terms,Research_Designs,Data_sources,Qualitative_Methods,Quantitative_Methods
+Methodology,Descriptive,Routine program,Qualitative interviews,Survey
+Design,Observational,Routine intervention,Individual interviews,Survey questionnaire
+Research Design,Exploratory,Routine service data,Semi-structured interviews,Structured survey
+Research Strategy,Cross-sectional,Routine records,In-depth interviews,Face-to-face survey
+Research Approach,Comparative,Treatment logs,Expert interviews,Phone survey
+Methods,Analytical,Treatment records,Key informant interviews,Online self-administered survey
+Literature Review,Correlational,Clinic records,KII$,Online self-administered questionnaire
+Policy Review,Intervention,Administrative Data,Narrative interviews,Self-administered survey
+Situation analysis,Experimental,Data on service utilization,Participant observations,Self-administered questionnaire
+Cost analysis,Adaptive design trial,Program communication,Participant assessments,Household survey
+Cost assessment,Quasi-Experimental,Program outreach messages and data,Ethnographic observations,Disease burden survey
+,Natural Experiment,Patient outreach messages and data,Ethnographic assessments,Patient survey
+,Randomized Control Trial,Social data,Direct observation,Indicator survey
+,RCT$,Primary data,Direct assessment,Demographic survey
+,Pragmatic trial,Secondary data,Field observations,Health survey
+,Pre-post,Video,Transect walk,Information survey
+,Before-after ,Program reports,Focus group discussion,Tally sheet
+,Interrupted time-series,Evaluation reports,FGD,Content analysis
+,Cohort,Meetings,Document analysis,Skills assessment scorecards
+,Longitudinal ,Diaries,Public discourse,Knowledge assessment scorecards
+,Case-control ,Community meetings,Discourse Analysis,Community scorecards
+,Qualitative,Informal group discussion,Media discourse analysis,
+,Quantitative,Clinical processes,Policy discourse analysis,
+,Mixed-Methods,Stakeholder interactions,Document review,
+,Sample,film,Data review,
+,sampling,photographs,,
+,randomized cluster,,,
+,purposive,,,
+,snowballing,,,
+,step-wedge,,,
+,step-wedged cluster,,,
+,convenience,,,
+,simple random,,,
+,systematic random,,,
+,stratified,,,
+,successive,,,
+,respondent driven,,,
+,maximum variation,,,
+,contrasting cases,,,
+,Control group,,,
+,Treatment group,,,
