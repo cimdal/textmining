@@ -11,6 +11,8 @@ install.packages("psych")
 install.packages("textclean")
 install.packages("reshape")
 install.packages("reshape2")
+install.packages("knit2pdf")
+install.packages("rmarkdown")
 
 library(readtext)
 library(stringr)
@@ -23,6 +25,8 @@ library(psych)
 library(textclean)
 library(reshape)
 library(reshape2)
+library(knit2pdf)
+library(rmarkdown)
 
 #Import LoIs as dataframes
 loi_raw_1 <- readtext::readtext("Batch1")
@@ -181,7 +185,7 @@ rm(loi_column_1,loi_column_2, loi_column_3,loi_column_4)
 ##########################################################################################################
 #############################################VISUALISATIONS COUNTRIES AND DISEASES########################
 ##########################################################################################################
-#Research Methods - Create a dataset for visualization
+#Countries and diseases - Create a dataset for visualization
 viz_disease <- prop.table(table(loi_count_1$diseases))*100
 viz <- as.data.frame(viz_disease)
 viz$type <- "disease"
@@ -521,7 +525,7 @@ loi_outcome$other_terms <- str_replace_all(loi_outcome$other_terms ,"character\\
 loi_outcome <- merge(loi_outcome,outcomes, by="other_terms")
 loi_count_outcome <- loi_outcome
 loi_count_outcome$tally <- 1
-loi_count_outcome <- aggregate(tally~doc_id+serial_number+batch_number+outcomes,loi_outcome,sum)
+loi_count_outcome <- aggregate(tally~doc_id+serial_number+batch_number+outcomes+loi_outcome,sum)
 #sum(loi_count_2$tally) #to check if sum of diseases are equal 
 
 #Add variables for each 'IR Outcome' with counts
